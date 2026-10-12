@@ -1,0 +1,360 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-10-12 09:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "casing",
+  "serial",
+  "customer",
+  "branch",
+  "company",
+  "job_col_1",
+  "flow",
+  "route",
+  "size",
+  "brand",
+  "tread_pattern",
+  "job_col_2",
+  "status",
+  "result",
+  "stage",
+  "next_stages",
+  "photo",
+  "dates_section",
+  "received_on",
+  "promised_date",
+  "dates_col",
+  "last_event_at",
+  "delivered_on",
+  "position",
+  "count_section",
+  "redo_count",
+  "repair_count",
+  "in_chamber",
+  "count_col",
+  "chamber_load",
+  "dispatch",
+  "events_section",
+  "events",
+  "invoice_section",
+  "price",
+  "invoice_html"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": "JC-.YY.-.#####",
+   "default": "JC-.YY.-.#####",
+   "reqd": 1,
+   "hidden": 1,
+   "no_copy": 1,
+   "print_hide": 1,
+   "set_only_once": 1
+  },
+  {
+   "fieldname": "casing",
+   "fieldtype": "Link",
+   "label": "Tyre",
+   "options": "FR Casing",
+   "reqd": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "serial",
+   "fieldtype": "Data",
+   "label": "Tyre Number",
+   "fetch_from": "casing.serial",
+   "read_only": 1,
+   "in_list_view": 1,
+   "bold": 1
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Customer",
+   "options": "Customer",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "branch",
+   "fieldtype": "Link",
+   "label": "Branch",
+   "options": "FR Branch",
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company",
+   "reqd": 1
+  },
+  {
+   "fieldname": "job_col_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "flow",
+   "fieldtype": "Select",
+   "label": "Flow",
+   "options": "Customer Retread\nCustomer Claim\nOwn Stock\nCasing Credit",
+   "default": "Customer Retread",
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "route",
+   "fieldtype": "Select",
+   "label": "Route",
+   "options": "Retread\nRepair Only",
+   "default": "Retread",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "size",
+   "fieldtype": "Link",
+   "label": "Size",
+   "options": "FR Tyre Size",
+   "fetch_from": "casing.size",
+   "read_only": 1
+  },
+  {
+   "fieldname": "brand",
+   "fieldtype": "Link",
+   "label": "Brand",
+   "options": "FR Tyre Brand",
+   "fetch_from": "casing.brand",
+   "read_only": 1
+  },
+  {
+   "fieldname": "tread_pattern",
+   "fieldtype": "Link",
+   "label": "Tread Pattern",
+   "options": "FR Tread Pattern"
+  },
+  {
+   "fieldname": "job_col_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "In Progress\nDispatched\nInvoiced\nDelivered",
+   "default": "In Progress",
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "result",
+   "fieldtype": "Select",
+   "label": "Result",
+   "options": "\nPassed\nRejected\nNot Retreadable",
+   "read_only": 1,
+   "no_copy": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "stage",
+   "fieldtype": "Link",
+   "label": "Last Stage",
+   "options": "FR Stage",
+   "read_only": 1,
+   "in_list_view": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "next_stages",
+   "fieldtype": "Small Text",
+   "label": "Next",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "photo",
+   "fieldtype": "Attach Image",
+   "label": "Photo",
+   "fetch_from": "casing.photo",
+   "read_only": 1
+  },
+  {
+   "fieldname": "dates_section",
+   "fieldtype": "Section Break",
+   "label": "Dates"
+  },
+  {
+   "fieldname": "received_on",
+   "fieldtype": "Datetime",
+   "label": "Received",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "promised_date",
+   "fieldtype": "Date",
+   "label": "Promised For"
+  },
+  {
+   "fieldname": "dates_col",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "last_event_at",
+   "fieldtype": "Datetime",
+   "label": "Last Moved",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "delivered_on",
+   "fieldtype": "Datetime",
+   "label": "Delivered",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "position",
+   "fieldtype": "Int",
+   "label": "Position",
+   "hidden": 1,
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "count_section",
+   "fieldtype": "Section Break",
+   "label": "On the Line"
+  },
+  {
+   "fieldname": "redo_count",
+   "fieldtype": "Int",
+   "label": "Redos",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "repair_count",
+   "fieldtype": "Int",
+   "label": "Repairs After Inspection",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "in_chamber",
+   "fieldtype": "Check",
+   "label": "In a Chamber Now",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "count_col",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "chamber_load",
+   "fieldtype": "Link",
+   "label": "Chamber Load",
+   "options": "FR Chamber Load",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "dispatch",
+   "fieldtype": "Link",
+   "label": "Dispatch",
+   "options": "FR Dispatch",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "events_section",
+   "fieldtype": "Section Break",
+   "label": "Stages"
+  },
+  {
+   "fieldname": "events",
+   "fieldtype": "Table",
+   "label": "Stages",
+   "options": "FR Job Event",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "invoice_section",
+   "fieldtype": "Section Break",
+   "label": "Invoice",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "price",
+   "fieldtype": "Currency",
+   "label": "Price",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "invoice_html",
+   "fieldtype": "HTML",
+   "label": "Invoice Preview"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-10-12 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Fuse Retread",
+ "name": "FR Job Card",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "Retread Office",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "Retread Floor",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "print": 1
+  }
+ ],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "autoname": "naming_series:",
+ "naming_rule": "By \"Naming Series\" field",
+ "title_field": "serial",
+ "show_title_field_in_link": 1,
+ "image_field": "photo",
+ "search_fields": "serial,customer,stage",
+ "track_changes": 1
+}

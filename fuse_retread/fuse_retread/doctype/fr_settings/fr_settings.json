@@ -1,0 +1,115 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-10-12 09:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "defaults_section",
+  "company",
+  "daily_target",
+  "vat_percent",
+  "defaults_col",
+  "own_prefix",
+  "next_own_number",
+  "intacct_section",
+  "invoice_item",
+  "repair_item"
+ ],
+ "fields": [
+  {
+   "fieldname": "defaults_section",
+   "fieldtype": "Section Break",
+   "label": "Defaults"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company",
+   "reqd": 1,
+   "description": "The company every tyre job, chamber load and dispatch belongs to."
+  },
+  {
+   "fieldname": "daily_target",
+   "fieldtype": "Int",
+   "label": "Daily Output Target",
+   "default": "40",
+   "description": "Tyres through Final Inspection per day. The production view measures today against it."
+  },
+  {
+   "fieldname": "vat_percent",
+   "fieldtype": "Percent",
+   "label": "VAT %",
+   "default": "15"
+  },
+  {
+   "fieldname": "defaults_col",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "own_prefix",
+   "fieldtype": "Data",
+   "label": "Own Number Prefix",
+   "default": "P",
+   "reqd": 1,
+   "description": "Every number the factory issues starts with this. A manufacturer serial may not, so the two can never clash."
+  },
+  {
+   "fieldname": "next_own_number",
+   "fieldtype": "Int",
+   "label": "Next Own Number",
+   "default": "10001",
+   "description": "Issued one at a time from the Receive at Branch screen and never re-used."
+  },
+  {
+   "fieldname": "intacct_section",
+   "fieldtype": "Section Break",
+   "label": "Sage Intacct"
+  },
+  {
+   "fieldname": "invoice_item",
+   "fieldtype": "Data",
+   "label": "Retread Service Item ID",
+   "default": "RETREAD",
+   "description": "The Intacct item the invoice preview names. Nothing posts to Intacct from this version."
+  },
+  {
+   "fieldname": "repair_item",
+   "fieldtype": "Data",
+   "label": "Repair Service Item ID",
+   "default": "REPAIR"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-10-12 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Fuse Retread",
+ "name": "FR Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "Retread Office",
+   "read": 1,
+   "write": 1,
+   "print": 1
+  },
+  {
+   "role": "Retread Floor",
+   "read": 1
+  }
+ ],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "issingle": 1
+}

@@ -1,0 +1,29 @@
+{
+ "creation": "2026-10-12 09:00:00.000000",
+ "docstatus": 0,
+ "doctype": "Page",
+ "idx": 0,
+ "modified": "2026-10-12 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Fuse Retread",
+ "name": "fr-flows",
+ "owner": "Administrator",
+ "page_name": "fr-flows",
+ "restrict_to_domain": "",
+ "roles": [
+  {
+   "role": "Retread Floor"
+  },
+  {
+   "role": "Retread Office"
+  },
+  {
+   "role": "System Manager"
+  }
+ ],
+ "script": null,
+ "standard": "Yes",
+ "style": null,
+ "system_page": 0,
+ "title": "The Four Flows"
+}

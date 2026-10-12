@@ -1,0 +1,117 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-10-12 09:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "stage",
+  "sequence",
+  "screen",
+  "stage_col",
+  "on_retread",
+  "on_repair",
+  "optional_on_retread",
+  "suggested"
+ ],
+ "fields": [
+  {
+   "fieldname": "stage",
+   "fieldtype": "Data",
+   "label": "Stage",
+   "reqd": 1,
+   "unique": 1,
+   "in_list_view": 1,
+   "bold": 1,
+   "description": "The name on the screen. Use the client's own words."
+  },
+  {
+   "fieldname": "sequence",
+   "fieldtype": "Int",
+   "label": "Order",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "screen",
+   "fieldtype": "Select",
+   "label": "Screen",
+   "in_list_view": 1,
+   "options": "None\nReceive\nInspection\nNumber Pad\nChambers\nDispatch\nOffice\nDeliver",
+   "default": "None",
+   "description": "None is a physical step: nothing is recorded there."
+  },
+  {
+   "fieldname": "stage_col",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "on_retread",
+   "fieldtype": "Check",
+   "label": "On the Retread Route",
+   "default": "1",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "on_repair",
+   "fieldtype": "Check",
+   "label": "On the Repair-only Route",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "optional_on_retread",
+   "fieldtype": "Check",
+   "label": "Optional on the Retread Route",
+   "description": "A tyre may pass it by, as Repairs on a tyre that needs none."
+  },
+  {
+   "fieldname": "suggested",
+   "fieldtype": "Check",
+   "label": "Suggested",
+   "description": "A recording point the client's own drawing does not have. Shown as Suggested."
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-10-12 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Fuse Retread",
+ "name": "FR Stage",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "Retread Office",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "Retread Floor",
+   "read": 1,
+   "report": 1
+  }
+ ],
+ "sort_field": "sequence",
+ "sort_order": "ASC",
+ "states": [],
+ "autoname": "field:stage",
+ "naming_rule": "By fieldname"
+}
