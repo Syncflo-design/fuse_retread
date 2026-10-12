@@ -224,18 +224,24 @@ def _other_keys():
 	return sorted(keys)
 
 
-def _save_unlocked(doc):
-	"""Save a Role or Module Profile, clearing a lock a failed earlier run left behind.
+def _write_profile(doc):
+	"""Write a Role or Module Profile straight to the database, then clear any lock on it.
 
-	Saving a profile queues a job that re-applies it to its users, and locks the profile until
-	that job runs. The job is queued after commit, so a load that fails later rolls back, the
-	job never runs, and the lock stays for hours: every retry stops at "Document Queued".
-	The lock is keyed by doctype and name, so it can be cleared before the profile exists.
+	A normal save queues a job and locks the profile, and a load that fails afterwards leaves
+	that lock behind: every retry stops at "Document Queued". The presenter login is set up
+	directly in _presenter, so the queued job is not needed.
 	"""
 	if doc.is_new():
 		doc.name = doc.get("role_profile") or doc.get("module_profile_name")
-	doc.unlock()
-	doc.save(ignore_permissions=True)
+		doc.db_insert()
+	else:
+		doc.db_update()
+	for table in doc.meta.get_table_fields():
+		frappe.db.delete(table.options, {"parent": doc.name, "parenttype": doc.doctype, "parentfield": table.fieldname})
+		for row in doc.get(table.fieldname):
+			row.parent = doc.name
+			row.db_insert()
+	frappe.get_doc(doc.doctype, doc.name).unlock()
 
 
 def _presenter_profiles():
@@ -247,7 +253,7 @@ def _presenter_profiles():
 		role_profile.role_profile = PROFILE
 	for role in PRESENTER_ROLES:
 		role_profile.append("roles", {"role": role})
-	_save_unlocked(role_profile)
+	_write_profile(role_profile)
 
 	hidden_field = frappe.get_meta("Module Profile").has_field("fuse_hidden_modules")
 	module_profile = frappe.get_doc("Module Profile", PROFILE) if frappe.db.exists("Module Profile", PROFILE) else \
@@ -258,7 +264,7 @@ def _presenter_profiles():
 			module_profile.append("block_modules", {"module": module})
 	if hidden_field:
 		module_profile.fuse_hidden_modules = "\n".join(_other_keys())
-	_save_unlocked(module_profile)
+	_write_profile(module_profile)
 
 	# The retread tiles leave every other presenter's Fuse Home, so each industry sees only its own.
 	others = []
