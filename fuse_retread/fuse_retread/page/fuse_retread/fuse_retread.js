@@ -455,7 +455,7 @@ class RetreadFloor {
 			const final = (job.events || []).filter((e) => e.stage === 'Final Inspection').pop();
 			return [
 				'<li>',
-				'<b>' + esc(frappe.datetime.str_to_user((job.received_on || '').slice(0, 10))) + '</b> · ' + esc(job.customer_name),
+				'<div><b>' + esc(frappe.datetime.str_to_user((job.received_on || '').slice(0, 10))) + '</b> · ' + esc(job.customer_name) + '</div>',
 				'<span>' + esc([job.route, job.tread_pattern].filter(Boolean).join(' · ')) + '</span>',
 				'<span>' + esc(job.built_by ? 'Built by ' + job.built_by : 'Not built') +
 					(final ? ' · Final Inspection: ' + esc(final.outcome) + (final.operator ? ' (' + esc(final.operator) + ')' : '') : '') + '</span>',
