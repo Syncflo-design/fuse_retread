@@ -21,6 +21,7 @@
   "status",
   "result",
   "stage",
+  "waiting_at",
   "next_stages",
   "photo",
   "dates_section",
@@ -71,7 +72,8 @@
    "fetch_from": "casing.serial",
    "read_only": 1,
    "in_list_view": 1,
-   "bold": 1
+   "bold": 1,
+   "in_standard_filter": 1
   },
   {
    "fieldname": "customer",
@@ -170,6 +172,17 @@
    "read_only": 1,
    "in_list_view": 1,
    "no_copy": 1
+  },
+  {
+   "fieldname": "waiting_at",
+   "fieldtype": "Link",
+   "label": "Waiting At",
+   "options": "FR Stage",
+   "read_only": 1,
+   "no_copy": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "description": "The next stage this tyre has to be recorded at. Empty once it is back with its owner."
   },
   {
    "fieldname": "next_stages",
@@ -308,7 +321,7 @@
  ],
  "index_web_pages_for_search": 0,
  "links": [],
- "modified": "2026-10-12 09:00:00.000000",
+ "modified": "2026-10-12 11:00:00.000000",
  "modified_by": "Administrator",
  "module": "Fuse Retread",
  "name": "FR Job Card",

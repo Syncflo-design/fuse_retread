@@ -38,6 +38,12 @@ def state_of(job):
 	}
 
 
+def waiting_at(upcoming):
+	"""The one stage a tyre is waiting for, for the Job Card list filter. Of "Repairs or
+	Building" it is Building, the point it cannot pass by, as in the production view."""
+	return upcoming[-1] if upcoming else None
+
+
 def record_stage(job, stage, outcome, operator=None, reason=None, route=None, tread_pattern=None,
 		note=None, at=None, user=None, save=True, rows=None):
 	"""Record one outcome at one stage on a Job Card. Refuses anything the route does not allow."""
@@ -56,6 +62,7 @@ def record_stage(job, stage, outcome, operator=None, reason=None, route=None, tr
 	job.route = new.get("route") or job.route
 	job.position = new["position"]
 	job.next_stages = "\n".join(new["next"])
+	job.waiting_at = waiting_at(new["next"])
 	job.result = new.get("result") or ""
 	job.status = new.get("status") or job.status
 	job.redo_count = cint(new.get("redo_count"))

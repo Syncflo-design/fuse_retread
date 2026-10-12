@@ -80,6 +80,8 @@ def get_tiles():
 			"icon": "📋",
 			"svg": CLIPBOARD,
 			"route": ["List", "FR Job Card"],
+			# Everything still in, until the filter is cleared.
+			"options": {"status": ["!=", "Delivered"]},
 			"roles": FLOOR,
 		},
 		{
